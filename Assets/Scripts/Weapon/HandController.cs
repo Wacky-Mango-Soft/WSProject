@@ -19,6 +19,9 @@ public class HandController : CloseWeaponController
     private QuickSlotController theQuickSlot;
     [SerializeField]
     private ItemEffectDatabase theItemEffectDatabase;
+    private float directAnimWeight = 1; // 애니메이션 블렌딩을 위한 멤버 변수
+    private bool isAnimTimeChecking = false;
+
 
     private void Start()
     {
@@ -33,10 +36,12 @@ public class HandController : CloseWeaponController
         {
             if (currentKit == null)
             {
-                if (QuickSlotController.go_HandItem == null)
+                if (QuickSlotController.go_HandItem == null) {
                     TryAttack();
-                else
+                }
+                else {
                     TryEating();
+                }
             }
             else
             {
@@ -93,11 +98,27 @@ public class HandController : CloseWeaponController
     {
         if (Input.GetButtonDown("Fire2") && !theQuickSlot.GetIsCoolTime())
         {
-            currentCloseWeapon.anim.SetTrigger("Eat");
+            WeaponManager.thePlayerAnimator.Animator.SetLayerWeight(1, 1);
+            WeaponManager.thePlayerAnimator.Animator.SetTrigger("Eat");
+            StartCoroutine(AnimationLayerBlendingCoroutine());
+            SoundManager.instance.PlaySE("Eat");
             //#0 아이템 효과 사용
             theItemEffectDatabase.UseItem(theQuickSlot.GetSelectedSlot().item);
             theQuickSlot.DecreaseSelectedItem();
         }
+    }
+
+    // 자연스러운 아바타 마스크 블랜딩 기능
+    private IEnumerator AnimationLayerBlendingCoroutine() {
+        while (directAnimWeight > 0) {
+            if (WeaponManager.thePlayerAnimator.Animator.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f) {
+                directAnimWeight -= Time.deltaTime;
+                WeaponManager.thePlayerAnimator.Animator.SetLayerWeight(1, directAnimWeight);
+            }
+            yield return null;
+        }
+        WeaponManager.thePlayerAnimator.Animator.SetLayerWeight(1, 0);
+        directAnimWeight = 1f;
     }
 
     protected override IEnumerator HitCoroutine()
