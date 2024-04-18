@@ -48,8 +48,7 @@ public class GameManager : MonoBehaviour {
     public bool isSaveDelay = false;
     public bool isOnePersonView = false;
 
-    public bool autoSaveEnable = false;
-
+    public bool autoSaveDisable;
 
     private SaveNLoad saveNLoad;
     private WeaponManager theWM;
@@ -93,19 +92,25 @@ public class GameManager : MonoBehaviour {
                 theWM.WeaponOut();
             }
         }
-        AutoSaveCheck();
+
+        if (!autoSaveDisable) {
+            AutoSaveCheck();
+        }
     }
 
     //AutoSave 체크박스 구현예정
     private void AutoSaveCheck() {
-        if (!autoSaveEnable) { return; }
 
         if (!isSaveDelay) {
-            if (TimeManager.instance.Minute == 30) {
+            if (TimeManager.instance.Minute == 1 && !isDied) {
                 StartCoroutine(saveNLoad.AutoSaveCoroutine());
             }
 
         }
+    }
+
+    private void AutoSaveTrigger() {
+        autoSaveDisable = !autoSaveDisable;
     }
 
     // Use this for initialization
