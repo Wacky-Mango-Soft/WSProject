@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DungeonController : MonoBehaviour
 {
-    [SerializeField] private DungeonProvider dungeonProvider;
+    private DungeonProvider dungeonProvider;
 
     private void Start() {
         dungeonProvider = FindObjectOfType<DungeonProvider>();

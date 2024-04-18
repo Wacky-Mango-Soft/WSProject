@@ -20,8 +20,6 @@ public class HandController : CloseWeaponController
     [SerializeField]
     private ItemEffectDatabase theItemEffectDatabase;
     private float directAnimWeight = 1; // 애니메이션 블렌딩을 위한 멤버 변수
-    private bool isAnimTimeChecking = false;
-
 
     private void Start()
     {

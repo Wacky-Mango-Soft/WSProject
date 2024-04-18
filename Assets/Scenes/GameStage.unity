@@ -41412,7 +41412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fb1ecb8c6f0483882f1d83aff33e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonProvider: {fileID: 0}
+  dungeonProvider: {fileID: 922717613}
 --- !u!1 &1047484693
 GameObject:
   m_ObjectHideFlags: 0
