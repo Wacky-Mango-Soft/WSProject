@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField] protected string animalName; // 동물의 이름
+    [SerializeField] protected string monsterName; // 몬스터의 이름
     [SerializeField] protected int hp;  // 동물의 체력
 
     [SerializeField] protected float walkSpeed;  // 걷기 속력
@@ -64,7 +64,7 @@ public class Monster : MonoBehaviour
 
     protected virtual void Update() // 자식 객체에서도 사용하기 위해 가상함수 선언
     {
-        if (!isDead)
+        if (!isDead && !isChasing)
         {
             Move();
             //Rotation(); #0
@@ -179,7 +179,7 @@ public class Monster : MonoBehaviour
 
     public string GetAnimalName()
     {
-        return animalName;
+        return monsterName;
     }
 
     // 추후 메소드 기능을 나눌 필요있음 (아이템 프리펩을 리턴하나 이름에 맞지 않는 태그변환과 오브젝트 파괴 기능)

@@ -47,17 +47,19 @@ public class GameManager : MonoBehaviour {
     private bool flag = false;
     public bool isSaveDelay = false;
     public bool isOnePersonView = false;
-
     public bool autoSaveDisable;
+    public bool isMapOpen = false;
 
     private SaveNLoad saveNLoad;
     private WeaponManager theWM;
+    private Crosshair crosshair;
 
     void Start () {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         theWM = FindObjectOfType<WeaponManager>();
         saveNLoad = gameObject.GetComponent<SaveNLoad>();
+        crosshair = FindObjectOfType<Crosshair>();
     }
     // Update is called once per frame
     void Update() {
@@ -70,6 +72,16 @@ public class GameManager : MonoBehaviour {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             canPlayerMove = true;
+        }
+
+        if (isOnePersonView) {
+            crosshair.CrossHairEnable(true);
+            if (MapController.currentState == State.Map) {
+                crosshair.CrossHairEnable(false);
+            }
+        } 
+        else {
+            crosshair.CrossHairEnable(false);
         }
 
         if (isOpenInventory || isOpenCraftManual || isOpenArchemyTable || isOpenComputer || isOpenSleepSlider) {
@@ -102,7 +114,7 @@ public class GameManager : MonoBehaviour {
     private void AutoSaveCheck() {
 
         if (!isSaveDelay) {
-            if (TimeManager.instance.Minute == 1 && !isDied) {
+            if (TimeManager.instance.Minute == 30 && !isDied) {
                 StartCoroutine(saveNLoad.AutoSaveCoroutine());
             }
 

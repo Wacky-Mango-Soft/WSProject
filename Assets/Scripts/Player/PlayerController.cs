@@ -130,13 +130,11 @@ public class PlayerController : MonoBehaviour
             theCamera.targetDisplay = 0;
             theWeaponCamera.targetDisplay = 0;
             theThirdPersonCamera.targetDisplay = 1;
-            theCrosshair.PersonViewModeChanger("OnePerson");
             CharacterMeshActiver(false);
         } else {
             theCamera.targetDisplay = 1;
             theWeaponCamera.targetDisplay = 1;
             theThirdPersonCamera.targetDisplay = 0;
-            theCrosshair.PersonViewModeChanger("ThirdPerson");
             CharacterMeshActiver(true);
         }
 

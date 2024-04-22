@@ -61,6 +61,7 @@ public class HandController : CloseWeaponController
 
     private void PreviewPositionUpdate()
     {
+        Debug.Log("PreviewPositionUpdate");
         if(Physics.Raycast(transform.position, transform.forward, out hitInfo, currentCloseWeapon.range + rangeAdd, layerMask))
         {
             previewPos = hitInfo.point;
