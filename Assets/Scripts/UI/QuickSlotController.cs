@@ -188,9 +188,8 @@ public class QuickSlotController : MonoBehaviour
         {
             if (quickSlots[selectedSlot].item.itemType == Item.ItemType.Equipment)
                 StartCoroutine(theWeaponManager.ChangeWeaponCoroutine(quickSlots[selectedSlot].item.weaponType, quickSlots[selectedSlot].item.itemName));
-            // else if (quickSlots[selectedSlot].item.itemType == Item.ItemType.Used || quickSlots[selectedSlot].item.itemType == Item.ItemType.Kit)
-                // ChangeHand(quickSlots[selectedSlot].item);
-                // 캐릭터 모델링 변경에 따른 수정 필요. 사용가능한 아이템을 손에 드는 코드.
+            else if (quickSlots[selectedSlot].item.itemType == Item.ItemType.Used || quickSlots[selectedSlot].item.itemType == Item.ItemType.Kit)
+                ChangeHand(quickSlots[selectedSlot].item);
             else
                 ChangeHand();
         }
@@ -224,6 +223,7 @@ public class QuickSlotController : MonoBehaviour
         go_HandItem.tag = "Untagged";   // 획득 안되도록 레이어 태그 바꿈
         go_HandItem.layer = 8;  // "Weapon" 레이어는 int
         go_HandItem.transform.SetParent(tf_ItemPos);
+        // tf_ItemPos.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
     }
 
     public void DecreaseSelectedItem()

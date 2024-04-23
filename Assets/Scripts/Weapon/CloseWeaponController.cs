@@ -43,6 +43,10 @@ public abstract class CloseWeaponController : MonoBehaviour
                             SoundManager.instance.PlaySE("Animal_Hit");
                             hitInfo.transform.GetComponent<Animal>().Damage(currentCloseWeapon.damage, transform.position);
                         }
+                        if (hitInfo.transform.tag == "Monster") { 
+                            SoundManager.instance.PlaySE("Monster_hurt");
+                            hitInfo.transform.GetComponent<Monster>().Damage(currentCloseWeapon.damage, transform.position);
+                        }
                     }
 
                     // 공격 애니메이션 선택 설정부

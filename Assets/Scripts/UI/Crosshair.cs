@@ -93,19 +93,11 @@ public class Crosshair : MonoBehaviour
         return gunAccuracy;
     }
 
-    public void PersonViewModeChanger(string _state)
+    public void CrossHairEnable(bool trigger)
     {
-        if (_state == "OnePerson") {
             for (int i = 1; i < obj_crosshairs.Length; i++)
             {
-                obj_crosshairs[i].SetActive(true);
+                obj_crosshairs[i].SetActive(trigger);
             }
-        }
-        else if (_state == "ThirdPerson") {
-            for (int i = 1; i < obj_crosshairs.Length; i++)
-            {
-                obj_crosshairs[i].SetActive(false);
-            }
-        }
     }
 }

@@ -125,5 +125,4 @@ public class StrongAnimal : Animal
         isRunning = false;
         isAttacking = false;
     }
-
 }
