@@ -9704,7 +9704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 128, y: -189}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 768, y: 169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &165179533
@@ -14907,7 +14907,7 @@ GameObject:
   - component: {fileID: 356574373}
   - component: {fileID: 356574372}
   - component: {fileID: 356574374}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ThirdPersonCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14953,7 +14953,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 118527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -47651,7 +47651,7 @@ GameObject:
   - component: {fileID: 1307113788}
   - component: {fileID: 1307113790}
   - component: {fileID: 1307113789}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58794,7 +58794,7 @@ MonoBehaviour:
   currentCloseWeapon: {fileID: 1640098774}
   layerMask:
     serializedVersion: 2
-    m_Bits: 116723
+    m_Bits: 17907
   rangeAdd: 3
   theQuickSlot: {fileID: 1022806028}
   theItemEffectDatabase: {fileID: 79669017}
@@ -72651,6 +72651,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 3781338466767701761, guid: de53832aa10b046e1bca18a136fdc9bc, type: 3}
+      propertyPath: sound_Normal.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781338466767701761, guid: de53832aa10b046e1bca18a136fdc9bc, type: 3}
+      propertyPath: sound_Normal.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: edd9af70b7f564e759edcccc34b89083, type: 3}
     - target: {fileID: 7876330360367847101, guid: de53832aa10b046e1bca18a136fdc9bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.641093

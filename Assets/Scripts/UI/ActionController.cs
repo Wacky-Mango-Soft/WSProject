@@ -190,7 +190,7 @@ public class ActionController : MonoBehaviour
     {
         if (Physics.Raycast(Tf_rayStartPoint, CurrentCameraForward, out hitInfo, CurrentRaycastRange, layerMask))
         {
-            Debug.DrawRay(Tf_rayStartPoint, CurrentCameraForward * hitInfo.distance, Color.red);
+            // Debug.DrawRay(Tf_rayStartPoint, CurrentCameraForward * hitInfo.distance, Color.red);
             // Debug.Log(hitInfo.transform.name + " <" + hitInfo.transform.tag + "> 레이중...");
             if (hitInfo.transform.tag == "Item")
                 ItemInfoAppear();

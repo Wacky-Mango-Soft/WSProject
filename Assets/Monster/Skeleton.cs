@@ -10,6 +10,7 @@ public class Skeleton : AgressiveMonster
         if (theFieldOfViewAngle.View() && !isDead && !isAttacking)
         {
             StopAllCoroutines(); // 여러 코루틴이 동시에 실행되는 것을 방지
+            isAction = false;
             StartCoroutine(ChaseTargetCoroutine());
         }
     }
@@ -22,9 +23,7 @@ public class Skeleton : AgressiveMonster
 
     private void RandomAction()
     {
-        RandomSound();
-
-        int _random = Random.Range(0, 4); // 대기, 걷기
+        int _random = Random.Range(0, 5); // 대기, 걷기
 
         if (_random == 0)
             Wait();
@@ -34,6 +33,8 @@ public class Skeleton : AgressiveMonster
             Peek();
         else if (_random == 3)
             TryWalk();
+        else if (_random == 4)
+            StartCoroutine(RandomSound());
     }
 
     private void Wait()
