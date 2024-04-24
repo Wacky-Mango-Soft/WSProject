@@ -10,6 +10,7 @@
 4. Dungeon leveling design and optimization
 5. NPC behavioral AI implementation
 6. Free switching between first and third person
+7. Save and load auto-save function
 <br></br>
 
 > RoadMap
