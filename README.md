@@ -1,4 +1,4 @@
-### This is a project to implement an open world game in Unity.
+### This is a project to implement an open world in Unity.
 <hr/>
 <br></br>
 
