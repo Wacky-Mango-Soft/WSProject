@@ -37,9 +37,9 @@ public class Monster : MonoBehaviour
     protected FieldOfViewAngle theFieldOfViewAngle;
     protected StatusController thePlayerStatus;
 
-    [SerializeField] protected AudioClip[] sound_Normal; // 돼지의 일상 소리. 여러개라 배열로
-    [SerializeField] protected AudioClip sound_Hurt;  // 돼지가 맞을 때 소리
-    [SerializeField] protected AudioClip sound_Dead; // 돼지가 죽을 때 소리
+    [SerializeField] protected AudioClip[] sound_Normal;
+    [SerializeField] protected AudioClip sound_Hurt;
+    [SerializeField] protected AudioClip sound_Dead;
 
     protected Vector3 destination;  // 목적지
     protected NavMeshAgent nav; // 필요한 컴포넌트
@@ -74,7 +74,7 @@ public class Monster : MonoBehaviour
 
     protected void Move()
     {
-        if (isWalking || isRunning)
+        if ((isWalking || isRunning) && !isDead)
             nav.SetDestination(transform.position + destination * movingDistance);
             //rigid.MovePosition(transform.position + transform.forward * applySpeed * Time.deltaTime); #0
     }
@@ -94,7 +94,7 @@ public class Monster : MonoBehaviour
         if (isAction)
         {
             currentTime -= Time.deltaTime;
-            if (currentTime <= 0 && !isChasing && !isAttacking)  // 랜덤하게 다음 행동을 개시 (추격중이 아닐때 추가)
+            if (currentTime <= 0 && !isChasing && !isAttacking && !isDead)  // 랜덤하게 다음 행동을 개시 (추격중이 아닐때 추가)
                 initAction();
         }
     }
@@ -160,10 +160,13 @@ public class Monster : MonoBehaviour
         nav.ResetPath();
     }
 
-    protected void RandomSound()
+    protected IEnumerator RandomSound()
     {
-        int _random = Random.Range(0, sound_Normal.Length);
-        PlaySE(sound_Normal[_random]);
+        if (sound_Normal != null) {
+            int _random = Random.Range(0, sound_Normal.Length);
+            PlaySE(sound_Normal[_random]);
+        }
+        yield return new WaitForSeconds(1f);
     }
 
     protected void PlaySE(AudioClip _clip)

@@ -75,6 +75,7 @@ public class AgressiveMonster : Monster
         }
 
         Debug.Log("chasing end");
+        isAction = true;
         isChasing = false;
         isRunning = false;
         anim.SetBool("Running", isRunning);
@@ -125,6 +126,7 @@ public class AgressiveMonster : Monster
     //#0 오직 코루틴 조건 변수 컨트롤을 위한 추가 메소드
     protected void CleanUpAfterDeath()
     {
+        isAction = false;
         isDead = true;
         isChasing = false;
         isRunning = false;

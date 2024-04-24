@@ -21,11 +21,14 @@ public class HandController : CloseWeaponController
     private ItemEffectDatabase theItemEffectDatabase;
     private float directAnimWeight = 1; // 애니메이션 블렌딩을 위한 멤버 변수
 
+    private ActionController theActionController;
+
     private void Start()
     {
         WeaponManager.currentWeapon = currentCloseWeapon.GetComponent<Transform>();
         WeaponManager.currentWeaponAnim = currentCloseWeapon.anim;
         //thePlayerController = FindObjectOfType<PlayerController>();
+        theActionController = FindObjectOfType<ActionController>();
     }
 
     void Update()
@@ -61,8 +64,9 @@ public class HandController : CloseWeaponController
 
     private void PreviewPositionUpdate()
     {
-        Debug.Log("PreviewPositionUpdate");
-        if(Physics.Raycast(transform.position, transform.forward, out hitInfo, currentCloseWeapon.range + rangeAdd, layerMask))
+        Debug.DrawRay(theActionController.Tf_rayStartPoint, theActionController.CurrentCameraForward, Color.red);
+
+        if(Physics.Raycast(theActionController.Tf_rayStartPoint, theActionController.CurrentCameraForward, out hitInfo, theActionController.CurrentRaycastRange + rangeAdd, layerMask))
         {
             previewPos = hitInfo.point;
             go_preview.transform.position = previewPos;
