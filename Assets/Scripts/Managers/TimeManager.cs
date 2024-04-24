@@ -39,6 +39,10 @@ public class TimeManager : MonoBehaviour {
     public bool IsBlended { get; set; }
     public float Time { get => time; set => time = value; }
 
+    void Start() {
+        Time = 21000;
+    }
+
     void FixedUpdate() {
         Time += UnityEngine.Time.fixedDeltaTime * timeScale;
         //time += Time.time;
@@ -47,7 +51,7 @@ public class TimeManager : MonoBehaviour {
             Time = 0;
             Day++;
         }
-        timeDebugText.text = $"{Day}일 : {Hour}시간 : {Minute}분";
+        timeDebugText.text = $"{Day}일 : {Hour}시 : {Minute}분";
 
     }
 }
